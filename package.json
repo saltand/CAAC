@@ -1,0 +1,37 @@
+{
+  "name": "@caac/monorepo",
+  "version": "1.0.0",
+  "description": "CAAC - Cross-Framework Cat Image Component Library",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "dev": "pnpm -r run dev",
+    "test": "pnpm -r run test",
+    "test:vue": "pnpm --filter @caac/vue run test",
+    "test:react": "pnpm --filter @caac/react run test",
+    "test:svelte": "pnpm --filter @caac/svelte run test",
+    "test:e2e": "playwright test",
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint",
+    "clean": "pnpm -r run clean && rm -rf node_modules",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.12.0",
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ]
+}

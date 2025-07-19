@@ -1,0 +1,42 @@
+{
+  "name": "@caac/nuxt",
+  "version": "1.0.0",
+  "description": "Nuxt module for CAAC Cat Image component with SSR support",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "module": "./dist/module.mjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "prepack": "nuxt-module-build",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.vue",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@caac/shared": "workspace:*",
+    "@caac/vue": "workspace:*",
+    "@nuxt/kit": "^3.8.0"
+  },
+  "peerDependencies": {
+    "nuxt": "^3.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^0.5.0",
+    "@nuxt/schema": "^3.8.0",
+    "nuxt": "^3.8.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  }
+}
