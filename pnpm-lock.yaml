@@ -24,8 +24,8 @@ importers:
         specifier: ^8.4.0
         version: 8.6.14(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.14)
       '@storybook/builder-vite':
-        specifier: ^9.1.1
-        version: 9.1.1(storybook@8.6.14)(vite@5.4.19)
+        specifier: ^8.4.0
+        version: 8.6.14(storybook@8.6.14)(vite@5.4.19)
       '@storybook/react':
         specifier: ^8.4.0
         version: 8.6.14(@storybook/test@8.6.14)(react-dom@18.3.1)(react@18.3.1)(storybook@8.6.14)(typescript@5.8.3)
@@ -3285,18 +3285,6 @@ packages:
       vite: 5.4.19(@types/node@20.19.9)
     dev: true
 
-  /@storybook/builder-vite@9.1.1(storybook@8.6.14)(vite@5.4.19):
-    resolution: {integrity: sha512-rM0QOfykr39SFBRQnoAa5PU3xTHnJE1R5tigvjved1o7sumcfjrhqmEyAgNZv1SoRztOO92jwkTi7En6yheOKg==}
-    peerDependencies:
-      storybook: ^9.1.1
-      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
-    dependencies:
-      '@storybook/csf-plugin': 9.1.1(storybook@8.6.14)
-      storybook: 8.6.14(prettier@3.6.2)
-      ts-dedent: 2.2.0
-      vite: 5.4.19(@types/node@20.19.9)
-    dev: true
-
   /@storybook/components@8.6.14(storybook@8.6.14):
     resolution: {integrity: sha512-HNR2mC5I4Z5ek8kTrVZlIY/B8gJGs5b3XdZPBPBopTIN6U/YHXiDyOjY3JlaS4fSG1fVhp/Qp1TpMn1w/9m1pw==}
     peerDependencies:
@@ -3336,15 +3324,6 @@ packages:
     resolution: {integrity: sha512-dErtc9teAuN+eelN8FojzFE635xlq9cNGGGEu0WEmMUQ4iJ8pingvBO1N8X3scz4Ry7KnxX++NNf3J3gpxS8qQ==}
     peerDependencies:
       storybook: ^8.6.14
-    dependencies:
-      storybook: 8.6.14(prettier@3.6.2)
-      unplugin: 1.16.1
-    dev: true
-
-  /@storybook/csf-plugin@9.1.1(storybook@8.6.14):
-    resolution: {integrity: sha512-MwdtvzzFpkard06pCfDrgRXZiBfWAQICdKh7kzpv1L8SwewsRgUr5WZQuEAVfYdSvCFJbWnNN4KirzPhe5ENCg==}
-    peerDependencies:
-      storybook: ^9.1.1
     dependencies:
       storybook: 8.6.14(prettier@3.6.2)
       unplugin: 1.16.1
