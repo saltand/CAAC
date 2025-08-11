@@ -26,7 +26,9 @@
     "clean": "rm -rf dist",
     "typecheck": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "eslint src --ext .js,.ts,.svelte",
-    "test": "vitest"
+    "test": "vitest",
+    "storybook": "storybook dev -p 6008",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@caac/shared": "workspace:*"

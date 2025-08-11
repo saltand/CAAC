@@ -9,7 +9,6 @@ import React, {
 } from 'react';
 import { 
   fetchCatImage, 
-  normalizeDimension, 
   isBrowser,
   type CatImageProps, 
   type CatImageEvents, 
@@ -89,17 +88,14 @@ export const CatImage = forwardRef<CatImageRef, CatImageComponentProps>(
     }, [change]);
 
     // Computed styles
-    const normalizedWidth = normalizeDimension(width);
-    const normalizedHeight = normalizeDimension(height);
-
     const containerStyle: React.CSSProperties = {
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      width: normalizedWidth,
-      height: normalizedHeight,
+      width: width,
+      height: height,
       borderRadius: '8px',
       overflow: 'hidden',
       border: '1px solid #e1e5e9',
