@@ -35,7 +35,9 @@
       "Bash(pnpm storybook --dry-run)",
       "Bash(npx storybook info)",
       "Bash(pnpm build)",
-      "Bash(pnpm typecheck)"
+      "Bash(pnpm typecheck)",
+      "Bash(pnpm add lucide-react)",
+      "Bash(pnpm dev)"
     ],
     "deny": []
   }

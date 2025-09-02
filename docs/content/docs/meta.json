@@ -1,0 +1,22 @@
+{
+  "title": "CAAC 文档",
+  "pages": [
+    "index",
+    "getting-started",
+    {
+      "title": "Vue",
+      "pages": [
+        "vue/installation",
+        "vue/usage"
+      ]
+    },
+    {
+      "title": "React", 
+      "pages": [
+        "react/installation",
+        "react/usage"
+      ]
+    },
+    "api"
+  ]
+}
