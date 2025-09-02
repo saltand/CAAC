@@ -6,7 +6,3 @@ __pycache__
 node_modules
 dist
 *.local
-
-# Storybook
-storybook-static
-.storybook/storybook-static

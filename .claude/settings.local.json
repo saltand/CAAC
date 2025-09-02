@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(source:*)",
+      "Bash(find:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(tree:*)",
+      "Bash(ruff:*)",
+      "Bash(touch:*)",
+      "Bash(cat:*)",
+      "Bash(ruff check:*)",
+      "Bash(pytest:*)",
+      "Bash(python:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python3 -m pytest:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "WebFetch(domain:api.thecatapi.com)",
+      "WebFetch(domain:documenter.getpostman.com)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm tsc:*)",
+      "Bash(npx storybook@latest init --type react --package-manager pnpm --skip-install)",
+      "Bash(rm /Users/salt/Code/CAAC/.storybook/multi-framework.ts)",
+      "Bash(pnpm --filter @caac/react run typecheck)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(pnpm storybook --version)",
+      "Bash(pnpm storybook --dry-run)",
+      "Bash(npx storybook info)"
+    ],
+    "deny": []
+  }
+}

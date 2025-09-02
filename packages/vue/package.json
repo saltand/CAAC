@@ -23,9 +23,7 @@
     "clean": "rm -rf dist",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint src --ext .ts,.vue",
-    "test": "vitest",
-    "storybook": "storybook dev -p 6007",
-    "build-storybook": "storybook build"
+    "test": "vitest"
   },
   "dependencies": {
     "@caac/shared": "workspace:*"
