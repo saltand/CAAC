@@ -4,107 +4,76 @@
     :style="{ width: normalizedWidth, height: normalizedHeight }"
   >
     <div v-if="loading" :class="$style.placeholder">
-      {{ placeholder }}
+      Loading cat...
     </div>
     <div v-else-if="error" :class="$style.error">
-      Error: {{ error }}
+      Failed to load cat image
     </div>
     <img
       v-else
       :src="imageUrl"
       alt="Random cat"
       :class="$style.image"
-      @load="handleImageLoad"
-      @error="handleImageError"
     />
-    
-    <button
-      v-if="showSwitchButton"
-      :class="$style.switchButton"
-      @click="change"
-      :disabled="loading"
-    >
-      换猫
-    </button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { fetchCatImage, normalizeDimension, isBrowser } from '@caac/shared';
-import type { CatImageProps, CatImageEvents } from '@caac/shared';
+
+// Simple props interface
+interface Props {
+  width?: number | string;
+  height?: number | string;
+}
 
 // Props with defaults
-const props = withDefaults(defineProps<CatImageProps & CatImageEvents>(), {
+const props = withDefaults(defineProps<Props>(), {
   width: 300,
-  height: 300,
-  placeholder: 'Loading cat...',
-  showSwitchButton: false
+  height: 300
 });
 
 // Reactive state
 const imageUrl = ref<string>('');
 const loading = ref(true);
-const error = ref<string>('');
+const error = ref<boolean>(false);
 
 // Computed properties for normalized dimensions
 const normalizedWidth = computed(() => normalizeDimension(props.width));
 const normalizedHeight = computed(() => normalizeDimension(props.height));
 
-// Image event handlers
-const handleImageLoad = () => {
-  loading.value = false;
-  props.onLoad?.(imageUrl.value);
-};
-
-const handleImageError = () => {
-  const errorObj = new Error('Failed to load cat image');
-  error.value = errorObj.message;
-  loading.value = false;
-  props.onError?.(errorObj);
-};
-
-// Main function to fetch and change cat image
-const change = async () => {
+// Main function to fetch cat image
+const loadCatImage = async () => {
   loading.value = true;
-  error.value = '';
+  error.value = false;
   
   try {
-    const result = await fetchCatImage(props.apiKey);
+    const result = await fetchCatImage();
     
-    if (result.error) {
-      error.value = result.error.message;
-      props.onError?.(result.error);
-    } else if (result.data) {
+    if (result.error || !result.data) {
+      error.value = true;
+    } else {
       imageUrl.value = result.data.url;
-      props.onChange?.(result.data.url);
-      // Note: onLoad will be triggered by the img element's load event
     }
   } catch (err) {
-    const errorObj = err instanceof Error ? err : new Error('Unknown error');
-    error.value = errorObj.message;
-    props.onError?.(errorObj);
+    error.value = true;
   } finally {
     loading.value = false;
   }
 };
 
-// Expose methods for parent component access
-defineExpose({ change });
-
 // Initialize on mount (SSR-safe)
 onMounted(() => {
   if (isBrowser()) {
-    change();
+    loadCatImage();
   }
 });
 </script>
 
 <style module>
 .container {
-  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
@@ -135,28 +104,5 @@ onMounted(() => {
 
 .error {
   color: #dc3545;
-}
-
-.switchButton {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  padding: 6px 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background-color 0.2s;
-}
-
-.switchButton:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-.switchButton:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 </style>

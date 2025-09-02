@@ -3,7 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: ['src/index.ts'],
   format: ['esm', 'cjs'],
-  dts: true,
+  dts: false,
   sourcemap: true,
   clean: true,
   splitting: false,
@@ -11,7 +11,7 @@ export default defineConfig({
   outDir: 'dist',
   target: 'es2020',
   external: ['react', 'react-dom'],
-  esbuildOptions: {
-    jsx: 'automatic'
+  esbuildOptions: (options) => {
+    options.jsx = 'automatic';
   }
 });

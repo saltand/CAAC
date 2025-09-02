@@ -33,7 +33,9 @@
       "mcp__context7__get-library-docs",
       "Bash(pnpm storybook --version)",
       "Bash(pnpm storybook --dry-run)",
-      "Bash(npx storybook info)"
+      "Bash(npx storybook info)",
+      "Bash(pnpm build)",
+      "Bash(pnpm typecheck)"
     ],
     "deny": []
   }

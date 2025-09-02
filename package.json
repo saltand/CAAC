@@ -10,16 +10,12 @@
     "test": "pnpm -r run test",
     "test:vue": "pnpm --filter @caac/vue run test",
     "test:react": "pnpm --filter @caac/react run test",
-    "test:svelte": "pnpm --filter @caac/svelte run test",
-    "test:e2e": "playwright test",
     "typecheck": "pnpm -r run typecheck",
     "lint": "pnpm -r run lint",
     "clean": "pnpm -r run clean && rm -rf node_modules",
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@types/node": "^20.0.0",
     "@vitejs/plugin-vue": "^5.0.0",
     "eslint": "^8.55.0",

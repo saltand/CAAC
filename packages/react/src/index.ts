@@ -1,17 +1,12 @@
 /**
- * @caac/react - React Cat Image component (compatible with Next.js)
+ * @caac/react - React Cat Image component
  */
 
 export { CatImage } from './CatImage.js';
-export { useCatImage, useCatImageDimensions } from './hooks.js';
 
 // Export types from shared package
 export type {
-  CatImageProps,
-  CatImageEvents,
-  CatImageRef,
-  CatImageData,
-  CatImageState
+  CatImageData
 } from '@caac/shared';
 
 // Default export for convenience
