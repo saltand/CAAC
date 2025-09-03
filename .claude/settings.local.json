@@ -37,7 +37,8 @@
       "Bash(pnpm build)",
       "Bash(pnpm typecheck)",
       "Bash(pnpm add lucide-react)",
-      "Bash(pnpm dev)"
+      "Bash(pnpm dev)",
+      "Bash(curl -I http://localhost:8080/doc/vue.html)"
     ],
     "deny": []
   }
