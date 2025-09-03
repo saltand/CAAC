@@ -1,5 +1,5 @@
 {
-  "name": "caac",
+  "name": "@saltand/caac",
   "version": "1.0.0",
   "description": "Cross-framework Cat Image Component Library - React and Vue components for displaying random cat images",
   "keywords": [
