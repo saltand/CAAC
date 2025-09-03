@@ -35,6 +35,11 @@
       "import": "./dist/react.js",
       "require": "./dist/react.cjs"
     },
+    "./vue": {
+      "types": "./dist/vue.d.ts",
+      "import": "./dist/vue.js",
+      "require": "./dist/vue.cjs"
+    },
     "./shared": {
       "types": "./dist/shared.d.ts",
       "import": "./dist/shared.js",

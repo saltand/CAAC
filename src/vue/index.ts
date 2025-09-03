@@ -2,7 +2,7 @@
  * caac/vue - Vue Cat Image component
  */
 
-import CatImage from './CatImage.vue';
+import CatImage from './CatImage';
 
 // Export component
 export { CatImage };
