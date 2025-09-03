@@ -1,36 +1,91 @@
 {
-  "name": "@caac/monorepo",
+  "name": "caac",
   "version": "1.0.0",
-  "description": "CAAC - Cross-Framework Cat Image Component Library",
-  "private": true,
+  "description": "Cross-framework Cat Image Component Library - React and Vue components for displaying random cat images",
+  "keywords": [
+    "react",
+    "vue",
+    "component",
+    "cat",
+    "image",
+    "api",
+    "typescript",
+    "cross-framework",
+    "ui",
+    "nextjs",
+    "vue3"
+  ],
+  "author": {
+    "name": "CAAC Team",
+    "email": "team@caac.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caac-team/caac.git"
+  },
+  "homepage": "https://github.com/caac-team/caac#readme",
+  "bugs": {
+    "url": "https://github.com/caac-team/caac/issues"
+  },
   "type": "module",
+  "exports": {
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    },
+    "./shared": {
+      "types": "./dist/shared.d.ts",
+      "import": "./dist/shared.js",
+      "require": "./dist/shared.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "pnpm -r run build",
-    "dev": "pnpm -r run dev",
-    "test": "pnpm -r run test",
-    "test:vue": "pnpm --filter @caac/vue run test",
-    "test:react": "pnpm --filter @caac/react run test",
-    "typecheck": "pnpm -r run typecheck",
-    "lint": "pnpm -r run lint",
-    "clean": "pnpm -r run clean && rm -rf node_modules",
-    "preinstall": "npx only-allow pnpm"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx,.vue",
+    "test": "vitest",
+    "prepublishOnly": "pnpm build && pnpm typecheck"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "vue": "^2.7.0 || ^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@vitejs/plugin-vue": "^5.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vue/test-utils": "^2.4.0",
     "eslint": "^8.55.0",
-    "prettier": "^3.1.0",
+    "jsdom": "^23.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.0.0",
     "typescript": "^5.3.0",
-    "vite": "^5.0.0",
-    "vitest": "^1.0.0"
+    "vitest": "^1.0.0",
+    "vue": "^3.3.0",
+    "vue-tsc": "^1.8.0"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
-  },
-  "packageManager": "pnpm@8.12.0",
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ]
+    "node": ">=18.0.0"
+  }
 }
