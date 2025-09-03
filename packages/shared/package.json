@@ -2,6 +2,29 @@
   "name": "@caac/shared",
   "version": "1.0.0",
   "description": "Shared utilities and types for CAAC components",
+  "keywords": [
+    "cat",
+    "api",
+    "component",
+    "utilities",
+    "typescript",
+    "shared",
+    "cross-framework"
+  ],
+  "author": {
+    "name": "CAAC Team",
+    "email": "team@caac.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caac-team/caac.git",
+    "directory": "packages/shared"
+  },
+  "homepage": "https://github.com/caac-team/caac#readme",
+  "bugs": {
+    "url": "https://github.com/caac-team/caac/issues"
+  },
   "type": "module",
   "exports": {
     ".": {

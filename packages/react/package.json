@@ -2,6 +2,31 @@
   "name": "@caac/react",
   "version": "1.0.0",
   "description": "React Cat Image component for CAAC (compatible with Next.js)",
+  "keywords": [
+    "react",
+    "component",
+    "cat",
+    "image",
+    "api",
+    "typescript",
+    "nextjs",
+    "ui",
+    "caac"
+  ],
+  "author": {
+    "name": "CAAC Team",
+    "email": "team@caac.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caac-team/caac.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/caac-team/caac#readme",
+  "bugs": {
+    "url": "https://github.com/caac-team/caac/issues"
+  },
   "type": "module",
   "exports": {
     ".": {

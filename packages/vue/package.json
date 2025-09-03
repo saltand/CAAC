@@ -2,6 +2,32 @@
   "name": "@caac/vue",
   "version": "1.0.0",
   "description": "Vue 2/3 compatible Cat Image component for CAAC",
+  "keywords": [
+    "vue",
+    "vue3",
+    "component",
+    "cat",
+    "image",
+    "api",
+    "typescript",
+    "sfc",
+    "ui",
+    "caac"
+  ],
+  "author": {
+    "name": "CAAC Team",
+    "email": "team@caac.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caac-team/caac.git",
+    "directory": "packages/vue"
+  },
+  "homepage": "https://github.com/caac-team/caac#readme",
+  "bugs": {
+    "url": "https://github.com/caac-team/caac/issues"
+  },
   "type": "module",
   "exports": {
     ".": {
