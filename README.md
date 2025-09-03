@@ -13,20 +13,22 @@ CAAC (Cross-framework Auto Cat API Component) 是一个简单易用的跨框架�
 ## 📦 安装
 
 ```bash
-npm install caac
+npm install @saltand/caac
 ```
 
 ```bash
-yarn add caac
+yarn add @saltand/caac
 ```
 
 ```bash
-pnpm add caac
+pnpm add @saltand/caac
 ```
 
 ## 🚀 快速开始
 
-### Vue 3
+### 方式 1：推荐使用子路径导入
+
+#### Vue 3
 
 ```vue
 <template>
@@ -34,24 +36,48 @@ pnpm add caac
 </template>
 
 <script setup>
-import { CatImage } from 'caac/vue'
+import { CatImage } from '@saltand/caac/vue'
 </script>
 ```
 
-### React
+#### React
 
 ```jsx
-import { CatImage } from 'caac/react'
+import { CatImage } from '@saltand/caac/react'
 
 export default function App() {
   return <CatImage width={300} height={300} />
 }
 ```
 
+### 方式 2：从主入口导入
+
+#### Vue 3
+
+```vue
+<template>
+  <VueCatImage :width="300" :height="300" />
+</template>
+
+<script setup>
+import { VueCatImage } from '@saltand/caac'
+</script>
+```
+
+#### React
+
+```jsx
+import { ReactCatImage } from '@saltand/caac'
+
+export default function App() {
+  return <ReactCatImage width={300} height={300} />
+}
+```
+
 ### Next.js
 
 ```jsx
-import { CatImage } from 'caac/react'
+import { CatImage } from '@saltand/caac/react'
 
 export default function Page() {
   return (
@@ -77,7 +103,7 @@ export default function Page() {
 ### TypeScript 类型
 
 ```typescript
-import type { CatImageData } from 'caac/shared'
+import type { CatImageData } from '@saltand/caac/shared'
 
 // 猫咪图片数据类型
 interface CatImageData {
@@ -93,7 +119,7 @@ interface CatImageData {
 ### React
 
 ```jsx
-import { CatImage } from 'caac/react'
+import { CatImage } from '@saltand/caac/react'
 
 function MyComponent() {
   return (
@@ -122,7 +148,7 @@ function MyComponent() {
 </template>
 
 <script setup>
-import { CatImage } from 'caac/vue'
+import { CatImage } from '@saltand/caac/vue'
 </script>
 
 <style scoped>
@@ -139,7 +165,7 @@ import { CatImage } from 'caac/vue'
 
 ```jsx
 // React
-import { CatImage } from 'caac/react'
+import { CatImage } from '@saltand/caac/react'
 
 function ResponsiveCatImage() {
   return (
@@ -163,7 +189,7 @@ function ResponsiveCatImage() {
 </template>
 
 <script setup>
-import { CatImage } from 'caac/vue'
+import { CatImage } from '@saltand/caac/vue'
 </script>
 ```
 
