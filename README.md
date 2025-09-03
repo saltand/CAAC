@@ -1,16 +1,16 @@
-# CAAC - 跨框架猫图组件库
+# CAAC - Cat as A Component
 
-CAAC (Cross-framework Auto Cat API Component) 是一个简单易用的跨框架猫咪图片展示组件库，同时支持 Vue 和 React 框架。
+CAAC (Cross-framework Auto Cat API Component) is a simple and easy-to-use cross-framework cat image display component library that supports both Vue and React frameworks.
 
-## ✨ 特性
+## ✨ Features
 
-- 🎨 **跨框架支持**：同时支持 Vue 和 React，API 一致
-- 🐱 **随机猫图**：使用 The Cat API 获取高质量猫咪图片
-- ⚡ **开箱即用**：无需额外配置，支持加载状态和错误处理
-- 📱 **TypeScript 支持**：完整的类型定义
-- 🎯 **简单导入**：通过子路径轻松导入框架特定组件
+- 🎨 **Cross-framework Support**: Supports both Vue and React with consistent API
+- 🐱 **Random Cat Images**: Uses The Cat API to fetch high-quality cat images
+- ⚡ **Ready to Use**: No additional configuration needed, with loading states and error handling
+- 📱 **TypeScript Support**: Full type definitions included
+- 🎯 **Simple Import**: Easy framework-specific component import via sub-paths
 
-## 📦 安装
+## 📦 Installation
 
 ```bash
 npm install @saltand/caac
@@ -24,9 +24,9 @@ yarn add @saltand/caac
 pnpm add @saltand/caac
 ```
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 方式 1：推荐使用子路径导入
+### Method 1: Recommended Sub-path Import
 
 #### Vue 3
 
@@ -50,7 +50,7 @@ export default function App() {
 }
 ```
 
-### 方式 2：从主入口导入
+### Method 2: Main Entry Import
 
 #### Vue 3
 
@@ -89,23 +89,23 @@ export default function Page() {
 }
 ```
 
-## 📚 API 文档
+## 📚 API Documentation
 
 ### Props
 
-| 属性 | 类型 | 默认值 | 描述 |
-|------|------|--------|------|
-| `width` | `number \| string` | `300` | 图片宽度 |
-| `height` | `number \| string` | `300` | 图片高度 |
-| `className` | `string` | - | CSS 类名 (仅 React) |
-| `style` | `CSSProperties` | - | 内联样式 (仅 React) |
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `number \| string` | `300` | Image width |
+| `height` | `number \| string` | `300` | Image height |
+| `className` | `string` | - | CSS class name (React only) |
+| `style` | `CSSProperties` | - | Inline styles (React only) |
 
-### TypeScript 类型
+### TypeScript Types
 
 ```typescript
 import type { CatImageData } from '@saltand/caac/shared'
 
-// 猫咪图片数据类型
+// Cat image data type
 interface CatImageData {
   id: string
   url: string
@@ -114,7 +114,7 @@ interface CatImageData {
 }
 ```
 
-## 🎨 样式自定义
+## 🎨 Styling Customization
 
 ### React
 
@@ -159,9 +159,9 @@ import { CatImage } from '@saltand/caac/vue'
 </style>
 ```
 
-## 🔧 高级用法
+## 🔧 Advanced Usage
 
-### 响应式设计
+### Responsive Design
 
 ```jsx
 // React
@@ -193,17 +193,17 @@ import { CatImage } from '@saltand/caac/vue'
 </script>
 ```
 
-### 错误处理
+### Error Handling
 
-组件内置了完整的错误处理机制：
+The component includes comprehensive error handling:
 
-- ⏳ **加载状态**：显示 "Loading cat..." 提示
-- ❌ **错误状态**：显示 "Failed to load cat image" 提示
-- ✅ **成功状态**：显示猫咪图片
+- ⏳ **Loading State**: Shows "Loading cat..." message
+- ❌ **Error State**: Shows "Failed to load cat image" message
+- ✅ **Success State**: Displays the cat image
 
-## 🌟 示例
+## 🌟 Examples
 
-查看 [在线演示](https://caac-demo.vercel.app) 或运行本地示例：
+Check out the [live demo](https://caac-demo.vercel.app) or run local examples:
 
 ```bash
 git clone https://github.com/caac-team/caac.git
@@ -212,17 +212,17 @@ pnpm install
 pnpm dev
 ```
 
-## 📄 许可证
+## 📄 License
 
-MIT License - 查看 [LICENSE](LICENSE) 文件了解详情。
+MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎贡献代码！请查看 [贡献指南](CONTRIBUTING.md) 了解如何参与项目开发。
+Contributions are welcome! Please check the [Contributing Guide](CONTRIBUTING.md) to learn how to participate in the project development.
 
-## 🐛 问题反馈
+## 🐛 Issue Reports
 
-如果遇到问题或有功能建议，请在 [GitHub Issues](https://github.com/caac-team/caac/issues) 中反馈。
+If you encounter issues or have feature suggestions, please report them in [GitHub Issues](https://github.com/caac-team/caac/issues).
 
 ---
 
