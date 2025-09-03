@@ -88,7 +88,8 @@ export default defineComponent({
         !this.loading && !this.error && h('img', {
           src: this.imageUrl,
           alt: 'Random cat',
-          class: styles.image
+          class: styles.image,
+          onClick: this.loadCatImage
         })
       ].filter(Boolean)
     );

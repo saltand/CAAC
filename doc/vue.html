@@ -1,94 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue with Local Components</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <div style="padding: 20px; font-family: Arial, sans-serif;">
-            <h1>{{ message }}</h1>
-            <p>{{ description }}</p>
-            <div style="margin: 20px 0;">
-                <cat-image :width="400" :height="300"></cat-image>
-            </div>
-            <p>The CatImage component is loaded from the local @caac/shared package.</p>
+      <div style="padding: 20px; font-family: Arial, sans-serif">
+        <h1>{{ message }}</h1>
+        <p>{{ description }}</p>
+        <div style="margin: 20px 0">
+          <cat-image :width="400" :height="300"></cat-image>
         </div>
+        <p>The CatImage component is loaded from the local @caac/shared package.</p>
+      </div>
     </div>
-    
+
     <!-- Vue CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    
+
     <script type="module">
-        // Load shared package
-        import * as shared from '../packages/shared/dist/index.js';
-        window.CAACSHared = shared;
-        
-        const { createApp, ref, computed, onMounted } = Vue;
-        
-        // CatImage component
-        const CatImage = {
-            props: {
-                width: {
-                    type: [Number, String],
-                    default: 300
-                },
-                height: {
-                    type: [Number, String],
-                    default: 300
-                }
-            },
-            setup(props) {
-                const imageUrl = ref('');
-                const loading = ref(true);
-                const error = ref(false);
-                
-                // Normalize dimension helper
-                const normalizeDimension = (value) => {
-                    if (typeof value === 'number') {
-                        return `${value}px`;
-                    }
-                    return value;
-                };
-                
-                const normalizedWidth = computed(() => normalizeDimension(props.width));
-                const normalizedHeight = computed(() => normalizeDimension(props.height));
-                
-                const loadCatImage = async () => {
-                    loading.value = true;
-                    error.value = false;
-                    
-                    try {
-                        const result = await window.CAACSHared.fetchCatImage();
-                        
-                        if (result.error || !result.data) {
-                            error.value = true;
-                        } else {
-                            imageUrl.value = result.data.url;
-                        }
-                    } catch (err) {
-                        error.value = true;
-                    } finally {
-                        loading.value = false;
-                    }
-                };
-                
-                onMounted(() => {
-                    if (typeof window !== 'undefined') {
-                        loadCatImage();
-                    }
-                });
-                
-                return {
-                    imageUrl,
-                    loading,
-                    error,
-                    normalizedWidth,
-                    normalizedHeight
-                };
-            },
-            template: `
+      // Load shared package
+      import * as shared from '../packages/shared/dist/index.js'
+      window.CAACSHared = shared
+
+      const { createApp, ref, computed, onMounted } = Vue
+
+      // CatImage component
+      const CatImage = {
+        props: {
+          width: {
+            type: [Number, String],
+            default: 300,
+          },
+          height: {
+            type: [Number, String],
+            default: 300,
+          },
+        },
+        setup(props) {
+          const imageUrl = ref('')
+          const loading = ref(true)
+          const error = ref(false)
+
+          // Normalize dimension helper
+          const normalizeDimension = value => {
+            if (typeof value === 'number') {
+              return `${value}px`
+            }
+            return value
+          }
+
+          const normalizedWidth = computed(() => normalizeDimension(props.width))
+          const normalizedHeight = computed(() => normalizeDimension(props.height))
+
+          const loadCatImage = async () => {
+            loading.value = true
+            error.value = false
+
+            try {
+              const result = await window.CAACSHared.fetchCatImage()
+
+              if (result.error || !result.data) {
+                error.value = true
+              } else {
+                imageUrl.value = result.data.url
+              }
+            } catch (err) {
+              error.value = true
+            } finally {
+              loading.value = false
+            }
+          }
+
+          onMounted(() => {
+            if (typeof window !== 'undefined') {
+              loadCatImage()
+            }
+          })
+
+          return {
+            imageUrl,
+            loading,
+            error,
+            normalizedWidth,
+            normalizedHeight,
+          }
+        },
+        template: `
                 <div 
                     :style="{
                         display: 'flex',
@@ -146,22 +146,22 @@
                         }"
                     />
                 </div>
-            `
-        };
-        
-        const app = createApp({
-            components: {
-                CatImage
-            },
-            data() {
-                return {
-                    message: 'Vue with Local Components',
-                    description: 'This page uses local CAAC Vue components:'
-                }
-            }
-        });
-        
-        app.mount('#app');
+            `,
+      }
+
+      const app = createApp({
+        components: {
+          CatImage,
+        },
+        data() {
+          return {
+            message: 'Vue with Local Components',
+            description: 'This page uses local CAAC Vue components:',
+          }
+        },
+      })
+
+      app.mount('#app')
     </script>
-</body>
+  </body>
 </html>
