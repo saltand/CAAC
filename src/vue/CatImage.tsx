@@ -1,6 +1,7 @@
 import { defineComponent, ref, computed, onMounted, h } from 'vue';
 import { fetchCatImage, normalizeDimension, isBrowser } from '../shared';
-import styles from './CatImage.module.css';
+// Import CSS for side effects; use plain class names
+import './CatImage.module.css';
 
 interface Props {
   width?: number | string;
@@ -73,22 +74,22 @@ export default defineComponent({
 
     return h('div', 
       {
-        class: styles.container,
+        class: 'container',
         style: containerStyle
       },
       [
         this.loading && h('div', 
-          { class: styles.placeholder }, 
+          { class: 'placeholder' }, 
           'Loading cat...'
         ),
         this.error && !this.loading && h('div', 
-          { class: styles.error }, 
+          { class: 'error' }, 
           'Failed to load cat image'
         ),
         !this.loading && !this.error && h('img', {
           src: this.imageUrl,
           alt: 'Random cat',
-          class: styles.image,
+          class: 'image',
           onClick: this.loadCatImage
         })
       ].filter(Boolean)

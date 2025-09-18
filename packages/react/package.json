@@ -30,9 +30,9 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./style.css": "./dist/style.css"
   },
@@ -48,7 +48,9 @@
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src --ext .ts,.tsx",
-    "test": "vitest"
+    "test": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@caac/shared": "workspace:*"
@@ -60,11 +62,16 @@
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@testing-library/jest-dom": "^6.0.0",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@vitejs/plugin-react": "^4.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "jsdom": "^23.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "storybook": "^8.6.14",
     "tsup": "^8.0.0",
     "typescript": "^5.3.0",
     "vitest": "^1.0.0"

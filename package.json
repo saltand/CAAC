@@ -28,6 +28,9 @@
   "bugs": {
     "url": "https://github.com/caac-team/caac/issues"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -96,7 +99,12 @@
     "typescript": "^5.3.0",
     "vitest": "^1.0.0",
     "vue": "^3.3.0",
-    "vue-tsc": "^1.8.0"
+    "vue-tsc": "^1.8.0",
+    "@antfu/eslint-config": "^5.3.0",
+    "eslint-plugin-format": "^1.0.1",
+    "@eslint-react/eslint-plugin": "^1.53.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20"
   },
   "engines": {
     "node": ">=18.0.0"

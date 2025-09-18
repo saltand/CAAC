@@ -13,10 +13,6 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ['react', 'react-dom', 'vue'],
-  esbuildOptions(options) {
-    options.jsx = 'automatic';
-    options.jsxFactory = 'h';
-    options.jsxFragment = 'Fragment';
-    options.jsxImportSource = 'vue';
-  }
+  // Enable CSS handling (including CSS modules) so Vue styles are included
+  css: true
 });

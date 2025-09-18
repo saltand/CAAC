@@ -89,6 +89,18 @@ export default function Page() {
 }
 ```
 
+## 📘 Storybook
+
+Storybook setups are available for both framework packages to explore component behaviour and props in isolation. Mocked responses are provided so the gallery works without hitting the public Cat API.
+
+- **React package**: `pnpm --filter @caac/react storybook` (default port `6006`)
+- **Vue package**: `pnpm --filter @caac/vue storybook` (default port `6007`)
+
+To build the static docs:
+
+- React: `pnpm --filter @caac/react build-storybook`
+- Vue: `pnpm --filter @caac/vue build-storybook`
+
 ## 📚 API Documentation
 
 ### Props

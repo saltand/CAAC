@@ -63,6 +63,7 @@ export const CatImage: React.FC<CatImageProps> = ({ width = 300, height = 300, c
     height: '100%',
     objectFit: 'cover',
     display: 'block',
+    cursor: 'pointer',
   }
 
   const placeholderStyle: React.CSSProperties = {
@@ -84,7 +85,7 @@ export const CatImage: React.FC<CatImageProps> = ({ width = 300, height = 300, c
 
   return (
     <div className={className} style={containerStyle}>
-      {loading ? <div style={placeholderStyle}>Loading cat...</div> : error ? <div style={errorStyle}>Failed to load cat image</div> : <img src={imageUrl} alt="Random cat" style={imageStyle} />}
+      {loading ? <div style={placeholderStyle}>Loading cat...</div> : error ? <div style={errorStyle}>Failed to load cat image</div> : <img src={imageUrl} alt="Random cat" style={imageStyle} onClick={loadCatImage} />}
     </div>
   )
 }
