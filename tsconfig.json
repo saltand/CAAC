@@ -1,21 +1,24 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["DOM", "DOM.Iterable", "ES6"],
+    "jsx": "react-jsx",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES6"
+    ],
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false,
+    "strict": true,
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": false,
     "outDir": "./dist",
-    "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": false,
-    "jsx": "react-jsx",
-    "types": ["node", "vite/client"]
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"

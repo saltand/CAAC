@@ -2,25 +2,25 @@
  * @caac/shared - Core utilities and types for CAAC cross-framework components
  */
 
+// Export API functions
+export { fetchCatImage } from './api'
+
 // Export all types
 export type {
-  CatImageData,
-  CatImageProps,
-  CatImageEvents,
-  CatImageRef,
   CatApiResponse,
-  CatImageState
-} from './types';
-
-// Export API functions
-export { fetchCatImage } from './api';
+  CatImageData,
+  CatImageEvents,
+  CatImageProps,
+  CatImageRef,
+  CatImageState,
+} from './types'
 
 // Export utility functions
 export {
+  debounce,
+  generateId,
+  getEnvVar,
   isBrowser,
   isClient,
   normalizeDimension,
-  generateId,
-  getEnvVar,
-  debounce
-} from './utils';
+} from './utils'

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { fetchCatImage, isBrowser } from '../shared'
 
 // Simple props interface
@@ -27,12 +27,15 @@ export const CatImage: React.FC<CatImageProps> = ({ width = 300, height = 300, c
 
       if (result.error || !result.data) {
         setError(true)
-      } else {
+      }
+      else {
         setImageUrl(result.data.url)
       }
-    } catch (err) {
+    }
+    catch {
       setError(true)
-    } finally {
+    }
+    finally {
       setLoading(false)
     }
   }
@@ -49,8 +52,8 @@ export const CatImage: React.FC<CatImageProps> = ({ width = 300, height = 300, c
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: width,
-    height: height,
+    width,
+    height,
     borderRadius: '8px',
     overflow: 'hidden',
     border: '1px solid #e1e5e9',

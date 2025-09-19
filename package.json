@@ -65,7 +65,7 @@
     "dev": "tsup --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src --ext .ts,.tsx,.vue",
+    "lint": "eslint src",
     "test": "vitest",
     "prepublishOnly": "pnpm build && pnpm typecheck"
   },

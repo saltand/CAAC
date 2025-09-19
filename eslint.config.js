@@ -4,4 +4,6 @@ export default antfu({
   formatters: true,
   vue: true,
   react: true,
+}).overrideRules({
+  'unicorn/error-message': 'off',
 })

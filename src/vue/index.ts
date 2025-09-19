@@ -2,13 +2,13 @@
  * caac/vue - Vue Cat Image component
  */
 
-import CatImage from './CatImage';
+import CatImage from './CatImage.vue'
 
 // Export component
-export { CatImage };
-export default CatImage;
+export { CatImage }
+export default CatImage
 
 // Export types from shared package
 export type {
-  CatImageData
-} from '../shared';
+  CatImageData,
+} from '../shared'
