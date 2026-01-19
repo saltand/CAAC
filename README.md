@@ -31,13 +31,13 @@ pnpm add @saltand/caac
 #### Vue 3
 
 ```vue
-<template>
-  <CatImage :width="300" :height="300" />
-</template>
-
 <script setup>
 import { CatImage } from '@saltand/caac/vue'
 </script>
+
+<template>
+  <CatImage :width="300" :height="300" />
+</template>
 ```
 
 #### React
@@ -55,13 +55,13 @@ export default function App() {
 #### Vue 3
 
 ```vue
-<template>
-  <VueCatImage :width="300" :height="300" />
-</template>
-
 <script setup>
 import { VueCatImage } from '@saltand/caac'
 </script>
+
+<template>
+  <VueCatImage :width="300" :height="300" />
+</template>
 ```
 
 #### React
@@ -103,14 +103,62 @@ To build the static docs:
 
 ## 📚 API Documentation
 
-### Props
+### CatImage Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `width` | `number \| string` | `300` | Image width |
-| `height` | `number \| string` | `300` | Image height |
-| `className` | `string` | - | CSS class name (React only) |
-| `style` | `CSSProperties` | - | Inline styles (React only) |
+| Prop               | Type               | Default            | Description                     |
+| ------------------ | ------------------ | ------------------ | ------------------------------- |
+| `width`            | `number \| string` | `300`              | Image width                     |
+| `height`           | `number \| string` | `300`              | Image height                    |
+| `placeholder`      | `string`           | `'Loading cat...'` | Loading placeholder text        |
+| `showSwitchButton` | `boolean`          | `false`            | Show button to switch cat image |
+| `apiKey`           | `string`           | -                  | Optional Cat API key            |
+| `className`        | `string`           | -                  | CSS class name (React only)     |
+| `style`            | `CSSProperties`    | -                  | Inline styles (React only)      |
+
+### CatImage Events
+
+| Event                  | Parameters       | Description                                    |
+| ---------------------- | ---------------- | ---------------------------------------------- |
+| `onLoad` / `@load`     | `(url: string)`  | Fired when image loads successfully            |
+| `onError` / `@error`   | `(error: Error)` | Fired when loading fails                       |
+| `onChange` / `@change` | `(url: string)`  | Fired when image changes (not on initial load) |
+
+### CatImage Ref Methods
+
+| Method     | Description                           |
+| ---------- | ------------------------------------- |
+| `change()` | Programmatically load a new cat image |
+
+### CatGallery Props
+
+| Prop          | Type               | Default | Description                 |
+| ------------- | ------------------ | ------- | --------------------------- |
+| `count`       | `number`           | `6`     | Number of images to display |
+| `columns`     | `number`           | `3`     | Number of grid columns      |
+| `gap`         | `number`           | `16`    | Gap between images (px)     |
+| `imageWidth`  | `number \| string` | `200`   | Individual image width      |
+| `imageHeight` | `number \| string` | `200`   | Individual image height     |
+| `apiKey`      | `string`           | -       | Optional Cat API key        |
+
+### useCatImage Hook / Composable
+
+```typescript
+// React
+import { useCatImage } from '@saltand/caac/react'
+
+// Vue
+import { useCatImage } from '@saltand/caac/vue'
+
+const { imageUrl, imageData, loading, error, refresh } = useCatImage({
+  apiKey: 'optional-api-key',
+  autoLoad: true, // default: true
+})
+
+const { imageUrl, imageData, loading, error, refresh } = useCatImage({
+  apiKey: 'optional-api-key',
+  autoLoad: true,
+})
+```
 
 ### TypeScript Types
 
@@ -151,27 +199,69 @@ function MyComponent() {
 ### Vue
 
 ```vue
-<template>
-  <CatImage 
-    :width="400" 
-    :height="300" 
-    class="my-cat-image"
-  />
-</template>
-
 <script setup>
 import { CatImage } from '@saltand/caac/vue'
 </script>
 
+<template>
+  <CatImage
+    :width="400"
+    :height="300"
+    class="my-cat-image"
+  />
+</template>
+
 <style scoped>
 .my-cat-image {
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 </style>
 ```
 
 ## 🔧 Advanced Usage
+
+### CatGallery Usage
+
+```jsx
+// React
+import { CatGallery } from '@saltand/caac/react'
+
+function MyGallery() {
+  return (
+    <CatGallery
+      count={9}
+      columns={3}
+      gap={12}
+      imageWidth={150}
+      imageHeight={150}
+      onLoad={images => console.log('Loaded', images.length, 'cats')}
+    />
+  )
+}
+```
+
+```vue
+<!-- Vue -->
+<script setup>
+import { CatGallery } from '@saltand/caac/vue'
+
+function onLoad(images) {
+  console.log('Loaded', images.length, 'cats')
+}
+</script>
+
+<template>
+  <CatGallery
+    :count="9"
+    :columns="3"
+    :gap="12"
+    :image-width="150"
+    :image-height="150"
+    @load="onLoad"
+  />
+</template>
+```
 
 ### Responsive Design
 
@@ -192,17 +282,17 @@ function ResponsiveCatImage() {
 
 ```vue
 <!-- Vue -->
+<script setup>
+import { CatImage } from '@saltand/caac/vue'
+</script>
+
 <template>
-  <CatImage 
-    width="100%" 
+  <CatImage
+    width="100%"
     height="300px"
     style="max-width: 500px"
   />
 </template>
-
-<script setup>
-import { CatImage } from '@saltand/caac/vue'
-</script>
 ```
 
 ### Error Handling

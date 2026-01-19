@@ -3,7 +3,8 @@
  */
 
 // Export API functions
-export { fetchCatImage } from './api'
+export { fetchCatImage, fetchCatImages } from './api'
+export type { CatImagesApiResponse } from './api'
 
 // Export all types
 export type {

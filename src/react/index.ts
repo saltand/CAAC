@@ -7,7 +7,12 @@ export type {
   CatImageData,
 } from '../shared'
 
+export { CatGallery } from './CatGallery'
+export type { CatGalleryProps, CatGalleryRef } from './CatGallery'
+// Export components and types
 export { CatImage } from './CatImage'
+export type { CatImageProps, CatImageRef } from './CatImage'
 
-// Default export for convenience
-export { CatImage as default } from './CatImage'
+// Export hook and types
+export { useCatImage } from './useCatImage'
+export type { UseCatImageOptions, UseCatImageReturn } from './useCatImage'

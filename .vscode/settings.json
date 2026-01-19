@@ -93,5 +93,6 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "CodeFree.index": true
 }

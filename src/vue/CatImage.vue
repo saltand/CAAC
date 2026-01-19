@@ -5,46 +5,70 @@ import { fetchCatImage, isBrowser, normalizeDimension } from '../shared'
 interface Props {
   width?: number | string
   height?: number | string
+  placeholder?: string
+  showSwitchButton?: boolean
+  apiKey?: string
+}
+
+interface Emits {
+  (e: 'load', url: string): void
+  (e: 'error', error: Error): void
+  (e: 'change', url: string): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
   width: 300,
   height: 300,
+  placeholder: 'Loading cat...',
+  showSwitchButton: false,
 })
 
-// Reactive state
+const emit = defineEmits<Emits>()
+
 const imageUrl = ref<string>('')
 const loading = ref(true)
-const error = ref<boolean>(false)
+const error = ref<Error | null>(null)
+const isFirstLoad = ref(true)
 
-// Computed properties for normalized dimensions
 const normalizedWidth = computed(() => normalizeDimension(props.width))
 const normalizedHeight = computed(() => normalizeDimension(props.height))
 
-// Main function to fetch cat image
 async function loadCatImage() {
   loading.value = true
-  error.value = false
+  error.value = null
 
   try {
-    const result = await fetchCatImage()
+    const result = await fetchCatImage(props.apiKey)
 
     if (result.error || !result.data) {
-      error.value = true
+      const err = result.error || new Error('Failed to load cat image')
+      error.value = err
+      emit('error', err)
     }
     else {
-      imageUrl.value = result.data.url
+      const url = result.data.url
+      imageUrl.value = url
+      emit('load', url)
+      if (!isFirstLoad.value) {
+        emit('change', url)
+      }
+      isFirstLoad.value = false
     }
   }
-  catch {
-    error.value = true
+  catch (err) {
+    const errorObj = err instanceof Error ? err : new Error('Unknown error')
+    error.value = errorObj
+    emit('error', errorObj)
   }
   finally {
     loading.value = false
   }
 }
 
-// Initialize on mount (SSR-safe)
+defineExpose({
+  change: loadCatImage,
+})
+
 onMounted(() => {
   if (isBrowser()) {
     loadCatImage()
@@ -53,30 +77,48 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    class="container"
-    :style="{
-      width: normalizedWidth,
-      height: normalizedHeight,
-    }"
-  >
-    <div v-if="loading" class="placeholder">
-      Loading cat...
+  <div class="wrapper">
+    <div
+      class="container"
+      :style="{
+        width: normalizedWidth,
+        height: normalizedHeight,
+      }"
+    >
+      <div v-if="loading" class="placeholder">
+        {{ placeholder }}
+      </div>
+      <div v-else-if="error" class="error">
+        <span>Failed to load cat image</span>
+        <button type="button" class="retry-button" @click="loadCatImage">
+          Retry
+        </button>
+      </div>
+      <img
+        v-else
+        :src="imageUrl"
+        alt="Random cat"
+        class="image"
+        @click="loadCatImage"
+      >
     </div>
-    <div v-else-if="error" class="error">
-      Failed to load cat image
-    </div>
-    <img
-      v-else
-      :src="imageUrl"
-      alt="Random cat"
-      class="image"
+    <button
+      v-if="showSwitchButton && !loading && !error"
+      type="button"
+      class="switch-button"
       @click="loadCatImage"
     >
+      Switch Cat
+    </button>
   </div>
 </template>
 
 <style scoped>
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -115,5 +157,40 @@ onMounted(() => {
 
 .error {
   color: #dc3545;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.switch-button {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  padding: 6px 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.switch-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.retry-button {
+  padding: 6px 12px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.retry-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 </style>
