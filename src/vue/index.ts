@@ -2,6 +2,8 @@
  * caac/vue - Vue Cat Image component
  */
 
+/// <reference path="./shims-vue.d.ts" />
+
 import CatGallery from './CatGallery.vue'
 import CatImage from './CatImage.vue'
 

@@ -135,8 +135,8 @@ export const CatGallery = forwardRef<CatGalleryRef, CatGalleryProps>(({
             }
           `}
         </style>
-        {Array.from({ length: count }).map((_, index) => (
-          <div key={`skeleton-${index}`} style={skeletonStyle} />
+        {Array.from({ length: count }, (_, i) => `skeleton-${i}`).map(key => (
+          <div key={key} style={skeletonStyle} />
         ))}
       </div>
     )

@@ -1,7 +1,21 @@
 {
   "name": "@saltand/caac",
+  "type": "module",
   "version": "1.0.3",
   "description": "Cross-framework Cat Image Component Library - React and Vue components for displaying random cat images",
+  "author": {
+    "name": "CAAC Team",
+    "email": "team@caac.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/caac-team/caac#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caac-team/caac.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caac-team/caac/issues"
+  },
   "keywords": [
     "react",
     "vue",
@@ -15,26 +29,9 @@
     "nextjs",
     "vue3"
   ],
-  "author": {
-    "name": "CAAC Team",
-    "email": "team@caac.dev"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/caac-team/caac.git"
-  },
-  "homepage": "https://github.com/caac-team/caac#readme",
-  "bugs": {
-    "url": "https://github.com/caac-team/caac/issues"
-  },
   "sideEffects": [
     "**/*.css"
   ],
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -57,9 +54,15 @@
       "require": "./dist/shared.cjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -67,7 +70,11 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vitest",
-    "prepublishOnly": "pnpm build && pnpm typecheck"
+    "prepublishOnly": "pnpm build && pnpm typecheck",
+    "storybook:react": "storybook dev -p 6006 -c .storybook-react",
+    "storybook:vue": "storybook dev -p 6007 -c .storybook-vue",
+    "build-storybook:react": "storybook build -c .storybook-react -o storybook-static/react",
+    "build-storybook:vue": "storybook build -c .storybook-vue -o storybook-static/vue"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
@@ -86,27 +93,34 @@
     }
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
+    "@antfu/eslint-config": "^5.3.0",
+    "@eslint-react/eslint-plugin": "^1.53.0",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/react": "^8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@storybook/vue3": "^8.6.14",
+    "@storybook/vue3-vite": "^8.6.14",
     "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-vue": "^5.2.4",
     "@vue/test-utils": "^2.4.0",
     "eslint": "^8.55.0",
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
     "jsdom": "^23.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "storybook": "^8.6.14",
     "tsup": "^8.0.0",
     "typescript": "^5.3.0",
+    "vite": "^6.4.1",
     "vitest": "^1.0.0",
     "vue": "^3.3.0",
-    "vue-tsc": "^1.8.0",
-    "@antfu/eslint-config": "^5.3.0",
-    "eslint-plugin-format": "^1.0.1",
-    "@eslint-react/eslint-plugin": "^1.53.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "vue-tsc": "^1.8.0"
   }
 }

@@ -21,7 +21,10 @@
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "stories/**/*",
+    ".storybook-react/**/*",
+    ".storybook-vue/**/*"
   ],
   "exclude": [
     "node_modules",

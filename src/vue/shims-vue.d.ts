@@ -10,6 +10,20 @@ declare module '*.vue' {
   export default component
 }
 
+declare module './CatImage.vue' {
+  import type { DefineComponent } from 'vue'
+
+  const component: DefineComponent<CatImageProps, CatImageExpose, CatImageEmits>
+  export default component
+}
+
+declare module './CatGallery.vue' {
+  import type { DefineComponent } from 'vue'
+
+  const component: DefineComponent<CatGalleryProps, CatGalleryExpose, CatGalleryEmits>
+  export default component
+}
+
 export interface CatImageProps {
   width?: number | string
   height?: number | string

@@ -16,6 +16,7 @@ export interface UseCatImageReturn {
   refresh: () => Promise<void>
 }
 
+// eslint-disable-next-line react-hooks-extra/no-unnecessary-use-prefix -- Vue composable naming convention
 export function useCatImage(options: UseCatImageOptions = {}): UseCatImageReturn {
   const { apiKey, autoLoad = true } = options
 
